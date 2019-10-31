@@ -1,4 +1,4 @@
-vendor,client_country
-alipay,CN
-wechatpay,
-generic,CN
+vendor,client_country,allow_duplicates
+alipay,CN,yes
+wechatpay,,no
+generic,CN,yes

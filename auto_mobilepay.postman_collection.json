@@ -1,22 +1,24 @@
 {
 	"info": {
 		"_postman_id": "16781ff4-8fe7-484c-85eb-fa9b78181125",
-		"name": "auto_alipay/wxpay",
+		"name": "auto_mobilepay",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "qr_code_generation",
+			"name": "qr_pay",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
 						"id": "a1caf610-67a6-4a4e-9fe3-8cff63a09407",
 						"exec": [
-							"let vendor = pm.iterationData.get('vendor')",
+							"let vendor = pm.iterationData.get('vendor');",
+							"let client_country = pm.iterationData.get('client_country');",
 							"",
 							"pm.globals.set(\"vendor\", vendor);",
-							"console.log(vendor)"
+							"pm.globals.set('client_country', client_country);",
+							"console.log(vendor,client_country);"
 						],
 						"type": "text/javascript"
 					}
@@ -26,8 +28,10 @@
 					"script": {
 						"id": "11d11869-b70d-47eb-9b24-d8b75a3f9780",
 						"exec": [
-							"",
+							"let auth = pm.environment.get(\"token\");",
 							"let url = pm.environment.get(\"url\");",
+							"let vendor = pm.iterationData.get(\"vendor\");",
+							"let allow = pm.iterationData.get(\"allow_duplicates\")",
 							"let q = '';",
 							"switch (url)",
 							"{",
@@ -50,9 +54,70 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
+							"// let  first_q = pm.response.text().split('=')[1].split('&')[0];",
+							"// const postRequest = {",
+							"//      method: 'POST',",
+							"//   url: `https://${url}citconpay.com/payment/pay_qr`,",
+							"//   headers: ",
+							"//   { 'cache-control': 'no-cache',",
+							"//      Connection: 'keep-alive',",
+							"//      'Content-Length': '184',",
+							"//      'Accept-Encoding': 'gzip, deflate',",
+							"//      'Postman-Token': 'be4ec84c-42ec-46e9-8145-2af506ec5e04,e29bec18-316e-44b7-8479-2fefdc26921b',",
+							"//      'Cache-Control': 'no-cache',",
+							"//      Accept: '*/*',",
+							"//      'User-Agent': 'PostmanRuntime/7.19.0',",
+							"//      'Content-Type': 'application/x-www-form-urlencoded',",
+							"//      Authorization: auth,",
+							"//      Host: 'citconpay.com'},",
+							"//   form: ",
+							"//   { amount: '1',",
+							"//      currency: 'USD',",
+							"//      vendor: vendor,",
+							"//      reference: '84238473247832874238',",
+							"//      ipn_url: 'http://52.87.248.227/ipn.php',",
+							"//      callback_url: 'http://citcon-inc.com',",
+							"//      allow_duplicates: allow,",
+							"//      client_country: 'CN' }",
+							"// }",
+							"// pm.sendRequest(postRequest, function (err, response) {",
+							"//     if(err){",
+							"//         console.log(err);",
+							"//     }",
+							"//     console.log(postRequest,response)",
+							"    ",
+							"//     let second_q = response.text().split('=')[1].split('&')[0]",
+							"//     pm.test(\"if duplicate or not\", function () {",
+							"//     if(allow ==='yes'){",
+							"//         pm.expect(first_q !== second_q);",
+							"//         console.log(first_q,second_q)",
+							"//     }",
+							"//     else if(allow ==='no'){",
+							"//         pm.expect(first_q === second_q);",
+							"//         console.log(first_q,second_q)",
+							"//     }",
+							"//     })",
+							"// });",
+							"",
 							"",
 							"let  qcode = pm.response.text().split('=')[1].split('&')[0]",
-							"pm.globals.set(\"transation_id\", qcode);"
+							"pm.iterationData.set(\"transation_id\", qcode);",
+							"",
+							"if(!pm.iterationData.get(\"client_country\")){",
+							"    pm.test(\"if com or cn\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"citconpay.com\");",
+							"});",
+							"}",
+							"else if(pm.iterationData.get(\"client_country\")=='CN'){",
+							"    pm.test(\"if com or cn\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"api.citconpay.cn\");",
+							"});",
+							"}",
+							"else{",
+							"    console.log(null);",
+							"}",
+							"",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -113,7 +178,7 @@
 						},
 						{
 							"key": "client_country",
-							"value": "CN",
+							"value": "{{client_country}}",
 							"type": "text"
 						}
 					]
@@ -544,6 +609,11 @@
 						{
 							"key": "allow_duplicates",
 							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "CN",
 							"type": "text"
 						}
 					]
