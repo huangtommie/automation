@@ -13,12 +13,12 @@
 					"script": {
 						"id": "a1caf610-67a6-4a4e-9fe3-8cff63a09407",
 						"exec": [
-							"let vendor = pm.iterationData.get('vendor');",
-							"let client_country = pm.iterationData.get('client_country');",
+							"// let vendor = pm.iterationData.get('vendor');",
+							"// let client_country = pm.iterationData.get('client_country');",
 							"",
-							"pm.globals.set(\"vendor\", vendor);",
-							"pm.globals.set('client_country', client_country);",
-							"console.log(vendor,client_country);"
+							"// pm.globals.set(\"vendor\", vendor);",
+							"// pm.globals.set('client_country', client_country);",
+							"// console.log(vendor,client_country);"
 						],
 						"type": "text/javascript"
 					}
@@ -44,7 +44,6 @@
 							"    default:",
 							"        q = 'q=P';",
 							"      ",
-							"    ",
 							"}",
 							"",
 							"",
@@ -117,7 +116,14 @@
 							"    console.log(null);",
 							"}",
 							"",
-							""
+							"if(pm.iterationData.get(\"allow_duplicates\")==='no'){",
+							"     pm.globals.set(\"qcode\",qcode)",
+							"     postman.setNextRequest(\"qr_pay_allow\")",
+							"    ",
+							"}",
+							"else{",
+							"    postman.setNextRequest(\"qr_inquire\")",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -173,7 +179,110 @@
 						},
 						{
 							"key": "allow_duplicates",
-							"value": "yes",
+							"value": "{{allow_duplicates}}",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "{{client_country}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/payment/pay_qr",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"payment",
+						"pay_qr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "qr_pay_allow",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a1caf610-67a6-4a4e-9fe3-8cff63a09407",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "11d11869-b70d-47eb-9b24-d8b75a3f9780",
+						"exec": [
+							"",
+							"pm.test(\"if qcode equals before\", function () {",
+							"    pm.expect(pm.response.text()).to.include(pm.globals.get(\"qcode\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "vendor",
+							"value": "{{vendor}}",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "84238473247832874238",
+							"type": "text"
+						},
+						{
+							"key": "ipn_url",
+							"value": "http://52.87.248.227/ipn.php",
+							"type": "text"
+						},
+						{
+							"key": "callback_url",
+							"value": "http://{{url}}.citcon-inc.com",
+							"type": "text"
+						},
+						{
+							"key": "allow_duplicates",
+							"value": "no",
 							"type": "text"
 						},
 						{
@@ -213,7 +322,9 @@
 							"});",
 							"pm.test(\"pay status is null\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.status).to.eql(undefined);",
+							"    console.log(jsonData.status)",
+							"    pm.expect(jsonData.status).to.eql(undefined)",
+							"",
 							"});"
 						],
 						"type": "text/javascript"
@@ -240,7 +351,7 @@
 					"urlencoded": [
 						{
 							"key": "transaction_id",
-							"value": "{{transation_id}}",
+							"value": "{{transation_id}}1",
 							"type": "text"
 						},
 						{
