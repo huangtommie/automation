@@ -325,7 +325,8 @@
 							"    console.log(jsonData.status)",
 							"    pm.expect(jsonData.status).to.eql(undefined)",
 							"",
-							"});"
+							"});",
+							"console.log(pm.response.json())"
 						],
 						"type": "text/javascript"
 					}
@@ -351,7 +352,7 @@
 					"urlencoded": [
 						{
 							"key": "transaction_id",
-							"value": "{{transation_id}}1",
+							"value": "{{transation_id}}",
 							"type": "text"
 						},
 						{
@@ -470,7 +471,8 @@
 							"pm.test(\"refund status is false\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.refunded).to.eql(false);",
-							"});"
+							"});",
+							"console.log(pm.response.json())"
 						],
 						"type": "text/javascript"
 					}
