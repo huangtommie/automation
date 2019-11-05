@@ -323,7 +323,7 @@
 							"pm.test(\"pay status is null\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    console.log(jsonData.status)",
-							"    pm.expect(jsonData.status).to.eql(undefined)",
+							"    pm.expect(jsonData.status).to.eql(undefined||null)",
 							"",
 							"});",
 							"console.log(pm.response.json())"
