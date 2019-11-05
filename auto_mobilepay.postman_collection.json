@@ -326,7 +326,7 @@
 							"    pm.expect(jsonData.status).to.eql(undefined||null)",
 							"",
 							"});",
-							"console.log(pm.response.json())"
+							"console.log(jsonData.status)"
 						],
 						"type": "text/javascript"
 					}
