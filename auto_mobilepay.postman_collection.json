@@ -99,8 +99,10 @@
 							"// });",
 							"",
 							"",
+							"",
+							"",
 							"let  qcode = pm.response.text().split('=')[1].split('&')[0]",
-							"pm.iterationData.set(\"transation_id\", qcode);",
+							"pm.globals.set(\"transation_id\", qcode);",
 							"",
 							"if(!pm.iterationData.get(\"client_country\")){",
 							"    pm.test(\"if com or cn\", function () {",
@@ -323,9 +325,19 @@
 							"pm.test(\"pay status is null\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    console.log(jsonData.status)",
-							"    pm.expect(jsonData.status).to.eql(undefined)",
+							"    pm.expect(jsonData.status).to.eql(null)",
 							"",
 							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "32b14578-a58b-4792-affb-f39baf4e9c3a",
+						"exec": [
 							""
 						],
 						"type": "text/javascript"
@@ -473,6 +485,16 @@
 							"    pm.expect(jsonData.refunded).to.eql(false);",
 							"});",
 							"console.log(pm.response.json())"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2a07f56d-6b62-4efa-be22-5a5b70750c5a",
+						"exec": [
+							""
 						],
 						"type": "text/javascript"
 					}

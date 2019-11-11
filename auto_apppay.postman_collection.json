@@ -46,7 +46,7 @@
 							"    pm.expect(jsonData.result).to.eql(\"success\");",
 							"});",
 							"",
-							"pm.iterationData.set(\"app_transation_id\", order_id);"
+							"pm.globals.set(\"app_transation_id\", pm.response.json().order_id);"
 						],
 						"type": "text/javascript"
 					}
@@ -54,7 +54,14 @@
 			],
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{app_token}}",
+							"type": "string"
+						}
+					]
 				},
 				"method": "POST",
 				"header": [
@@ -62,11 +69,6 @@
 						"key": "Content-Type",
 						"name": "Content-Type",
 						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
 						"type": "text"
 					}
 				],
@@ -121,12 +123,12 @@
 					]
 				},
 				"url": {
-					"raw": "https://{{url}}.citconpay.com/payment/pay_app",
+					"raw": "https://{{url}}.citconpay.cn/payment/pay_app",
 					"protocol": "https",
 					"host": [
 						"{{url}}",
 						"citconpay",
-						"com"
+						"cn"
 					],
 					"path": [
 						"payment",
@@ -147,7 +149,7 @@
 							"pm.test(\"pay status is null\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    console.log(jsonData.status)",
-							"    pm.expect(jsonData.status).to.eql(undefined)",
+							"    pm.expect(jsonData.status).to.eql(null)",
 							"",
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
@@ -188,7 +190,7 @@
 						},
 						{
 							"key": "transaction_id",
-							"value": "{{app_transaction_id}}",
+							"value": "{{app_transation_id}}",
 							"type": "text"
 						}
 					]
