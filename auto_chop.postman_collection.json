@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9486aaff-da26-453c-bb84-3d055c007d7c",
+						"id": "c570b205-9078-4d91-86c8-f34b2ef0e641",
 						"exec": [
 							"",
 							"",
@@ -25,7 +25,7 @@
 							"    pm.expect(qstring).not.eql('');",
 							"})",
 							"pm.globals.set(\"chop_trans\", qstring);",
-							"console.log('chop_trans',pm.iterationData.get('chop_trans'))",
+							"",
 							"if(!pm.iterationData.get(\"client_country\")){",
 							"    pm.test(\"if com or cn\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"citconpay.com\");",
@@ -253,6 +253,7 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"",
 							"pm.test(\"no result\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.notify_result).to.eql(null);",
@@ -469,6 +470,82 @@
 						{
 							"key": "transaction_id",
 							"value": "{{chop_trans_true}}",
+							"type": "text"
+						},
+						{
+							"key": "reason",
+							"value": "test",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/chop/refund",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"chop",
+						"refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refund",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5d8860d-04ea-4590-be54-284f96b48b7b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"no refund\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql('Refund amount greater than allowed.');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{chop_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "transaction_id",
+							"value": "{{chop_trans}}",
 							"type": "text"
 						},
 						{
