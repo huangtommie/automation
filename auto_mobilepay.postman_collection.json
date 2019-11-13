@@ -768,51 +768,8 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "qr_transactions",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "41780622-5b0b-4057-9a57-c12d06dc3ce3",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"pm.test(\"not empty\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"id\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{token}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://{{url}}.citconpay.com/payment/transactions",
-					"protocol": "https",
-					"host": [
-						"{{url}}",
-						"citconpay",
-						"com"
-					],
-					"path": [
-						"payment",
-						"transactions"
-					]
-				}
-			},
-			"response": []
 		}
+		
 	],
 	"protocolProfileBehavior": {}
 }
