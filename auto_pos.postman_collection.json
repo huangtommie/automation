@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "8635a11a-82fb-48b9-ab7a-86b3ab8f9c8f",
+		"name": "auto_pos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pos_initialize",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ae62940-af5c-42c6-8a73-90bdb6bf6b93",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result is success\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"success\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "store_code",
+							"value": "5b5b4ddf",
+							"type": "text"
+						},
+						{
+							"key": "nonce",
+							"value": "1576228157",
+							"type": "text"
+						},
+						{
+							"key": "hash",
+							"value": "7e51a99481a12dc0bb3d55dcf8f17228",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/rest/initialize",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"initialize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pos_signIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a4f4057-6f3b-45dd-ba1d-d4805fbd2211",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result is true\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"success\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "5b5b4ddf",
+							"type": "text"
+						},
+						{
+							"key": "nonce",
+							"value": "1576228157",
+							"type": "text"
+						},
+						{
+							"key": "hash",
+							"value": "7e51a99481a12dc0bb3d55dcf8f17228",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/rest/sign_in",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pos_showqr",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8eeced78-c63a-4561-a345-e273a44984ce",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result is true\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"success\");",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var qrcode = pm.response.json().qr_code.split('=')[1];",
+							"    pm.expect(qrcode).to.not.be.empty",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "5b5b4ddf",
+							"type": "text"
+						},
+						{
+							"key": "nonce",
+							"value": "1576228157",
+							"type": "text"
+						},
+						{
+							"key": "hash",
+							"value": "7e51a99481a12dc0bb3d55dcf8f17228",
+							"type": "text"
+						},
+						{
+							"key": "tip",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "total",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/rest/gen_payment_qr",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"gen_payment_qr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pos_refund",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "663247bf-f644-4e55-87dc-278f07cd6b7d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"fail\");",
+							"});",
+							"pm.test(\"code\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(\"A3\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "hash=e74422a5a783f8f3b78597be161a98ed&nonce=1576472353&note=TEST&pos_local_time=2019-12-16%2012%3A59%3A13&refund_amount=0&signature=JegsI2SplXBBRfQMP%252B5Hu9h6OoOh%252Bsd7I9A2G%252BkNx3H%252FWollP4CVS%252BbP3PtUMbBW4aC8JTMma%252FwPwEhEAhX32Lb6%252FKge9VRQfS1wdJf%252BypMo6w17In2TTh7DbaAsKGug75ZiriU2Pt7TuCG95B0fZyJJVu2pNKAlBvuVy6GQLxs1C5pI9xHnHgMppfM8qHcGy8hco1Yc9bwGL1Iui1QddQkPYEqhZKOLZv48iCO6rneid1u0H8JNmMu2kD%252B9586lXu2UfTnhcaTpVhvBOxT3K9nWyHH22hyDka%252BYVjq%252F6lXfrmqQyEeUZK98rYi8SZ5R93DyQ4HaVYt70H36rVhXVg%253D%253D&tag=&token=5b5b4ddf&transaction_id=280024356375&version=2.5.1"
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/rest/refund",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pos_cancel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a81f4a0-66f1-46b3-b1b9-62f232c5e294",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"fail\");",
+							"});",
+							"pm.test(\"code\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql(\"E4\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "hash=e74422a5a783f8f3b78597be161a98ed&nonce=1576472353&note=TEST&pos_local_time=2019-12-16%2012%3A59%3A13&refund_amount=0&signature=JegsI2SplXBBRfQMP%252B5Hu9h6OoOh%252Bsd7I9A2G%252BkNx3H%252FWollP4CVS%252BbP3PtUMbBW4aC8JTMma%252FwPwEhEAhX32Lb6%252FKge9VRQfS1wdJf%252BypMo6w17In2TTh7DbaAsKGug75ZiriU2Pt7TuCG95B0fZyJJVu2pNKAlBvuVy6GQLxs1C5pI9xHnHgMppfM8qHcGy8hco1Yc9bwGL1Iui1QddQkPYEqhZKOLZv48iCO6rneid1u0H8JNmMu2kD%252B9586lXu2UfTnhcaTpVhvBOxT3K9nWyHH22hyDka%252BYVjq%252F6lXfrmqQyEeUZK98rYi8SZ5R93DyQ4HaVYt70H36rVhXVg%253D%253D&tag=&token=5b5b4ddf&transaction_id=280024356375&version=2.5.1"
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/rest/cancel",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pos_get_history",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37f88546-8996-4616-bc46-7c08ba67f0f8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).not.to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "hash=23ecf7d88b9da4cb6e730fef867325d2&nonce=1576468383&note=TEST&signature=k2ZTQj7UAx83aWYhG09n8SNQBkyHBNVSCCRuVH9SRFvGjP70CsEziQfiJoUS%252Bf7pex%252BW5aDoKsgqEEBA%252B5ETLfXDB9%252FVQhyyKPVLYNjxSoavULgRFpMdyJ0p75CsmbX1l3Ws2PEmj4FX3cFJgAGc6vsLMzb7r3aN%252FNRMA0NOrcsO8osE3rpG2MH8k%252BlmkupPaqdjUV7QtDJPb3tD%252BgFAasZHyzgdCx5xPhgXe0obvJNs4Qd8gZD3P9Enb0zfBBgMsU4NTGd1EPkmYX0yakbdxpXUPdrY49lrhcHad%252B1YZrEhc%252B4xSA49kzbV8VS0JouGrJpp4wA0g5TDbmDL0Tm2Gg%253D%253D&timezone=Asia/Shanghai&token=5b5b4ddf&version=2.5.1"
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/rest/get_history",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"get_history"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f9e42c7b-2c3f-4403-8ba7-9f027c941c86",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bc58089f-6386-4c4e-be95-53fc197959ff",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
