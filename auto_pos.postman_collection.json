@@ -391,6 +391,172 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "o2o_pay",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "def17a3c-18cf-430f-ab15-5a926370db33",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result is success\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"success\");",
+							"});",
+							"",
+							"let transaction_id = pm.response.json().transaction_id;",
+							"",
+							"pm.variables.set(\"transaction_id\", transaction_id);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "78e8ac02-6f71-45a4-9b52-1c3c7248f3c8",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{o2o_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "12343242342345355",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/o2o_pay",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"o2o_pay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "o2o_refund",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "acc4f458-6a65-4e4f-90ef-448a2a31872a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"result is success\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result).to.eql(\"success\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{o2o_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "transaction_id",
+							"value": "150000003793",
+							"description": "mobilepay transaction_id",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "reference2",
+							"value": "{{transaction_id}}",
+							"description": "posp transaction_id",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}.citconpay.com/posp/o2o_refund",
+					"protocol": "https",
+					"host": [
+						"{{url}}",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"posp",
+						"o2o_refund"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
