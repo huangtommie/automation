@@ -3,7 +3,7 @@ orbs:
   slack: circleci/slack@4.0
 jobs:
   test:
-   docker:
+    docker:
       - image: 'cimg/base:stable'
     steps:
       - run: newman run just_200.postman_collection.json -e production.postman_environment.json --reporters cli --bail newman
