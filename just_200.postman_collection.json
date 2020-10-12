@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "chop",
+			"name": "chop-alipay",
 			"event": [
 				{
 					"listen": "test",
@@ -64,7 +64,379 @@
 					"urlencoded": [
 						{
 							"key": "payment_method",
-							"value": "{{vendor}}",
+							"value": "alipay",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "huang monitor",
+							"type": "text"
+						},
+						{
+							"key": "ipn_url",
+							"value": "http://merchant.com/ipn",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_success",
+							"value": "http://merchant.com/success",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_fail",
+							"value": "http://merchant.com/fail",
+							"type": "text"
+						},
+						{
+							"key": "mobile_result_url",
+							"value": "http://merchant.com/mobile_confirm?reference=jkh25jh1348fd89sg",
+							"type": "text"
+						},
+						{
+							"key": "allow_duplicates",
+							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/chop/chop",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"chop",
+						"chop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chop-wechatpay",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "83448539-937f-42b5-b82b-8faa4dfc01db",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"let qstring = pm.response.json().url.split('=')[1];",
+							"console.log(qstring)",
+							"pm.test(\"qstring is not empty\", function(){",
+							"    pm.expect(qstring).not.eql('');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4b250a9d-22c5-4524-8c7a-bb410d1b55e8",
+						"exec": [
+							"let vendor = pm.iterationData.get(\"vendor\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{chop_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "payment_method",
+							"value": "wechatpay",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "huang monitor",
+							"type": "text"
+						},
+						{
+							"key": "ipn_url",
+							"value": "http://merchant.com/ipn",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_success",
+							"value": "http://merchant.com/success",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_fail",
+							"value": "http://merchant.com/fail",
+							"type": "text"
+						},
+						{
+							"key": "mobile_result_url",
+							"value": "http://merchant.com/mobile_confirm?reference=jkh25jh1348fd89sg",
+							"type": "text"
+						},
+						{
+							"key": "allow_duplicates",
+							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/chop/chop",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"chop",
+						"chop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chop-upop",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "41baacfa-f93b-490d-9dec-bc8eb962c248",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"let qstring = pm.response.json().url.split('=')[1];",
+							"console.log(qstring)",
+							"pm.test(\"qstring is not empty\", function(){",
+							"    pm.expect(qstring).not.eql('');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7d638206-dca2-4f0d-a627-5ea76045c39c",
+						"exec": [
+							"let vendor = pm.iterationData.get(\"vendor\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{chop_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "payment_method",
+							"value": "upop",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "huang monitor",
+							"type": "text"
+						},
+						{
+							"key": "ipn_url",
+							"value": "http://merchant.com/ipn",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_success",
+							"value": "http://merchant.com/success",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_fail",
+							"value": "http://merchant.com/fail",
+							"type": "text"
+						},
+						{
+							"key": "mobile_result_url",
+							"value": "http://merchant.com/mobile_confirm?reference=jkh25jh1348fd89sg",
+							"type": "text"
+						},
+						{
+							"key": "allow_duplicates",
+							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/chop/chop",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"chop",
+						"chop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chop-cc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ec9b38db-55ed-44ed-8fa4-c796496bfdca",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"let qstring = pm.response.json().url.split('=')[1];",
+							"console.log(qstring)",
+							"pm.test(\"qstring is not empty\", function(){",
+							"    pm.expect(qstring).not.eql('');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "290f2a9b-fc10-494a-a949-7b3bf862af29",
+						"exec": [
+							"let vendor = pm.iterationData.get(\"vendor\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{chop_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "payment_method",
+							"value": "cc",
 							"type": "text"
 						},
 						{
