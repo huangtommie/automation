@@ -11,6 +11,10 @@ jobs:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
           iteration-data: ./data/just_200.csv
+  notify:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
       - slack/notify:
           channel: 'C01C5C7GY06'
           template: basic_fail_1
@@ -20,6 +24,7 @@ workflows:
   test-and-notification:
     jobs:
       - newman-collection-run
+      - notify
         
           
 
