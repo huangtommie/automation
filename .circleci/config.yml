@@ -7,6 +7,7 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - slack/notify:
+          channel: 'service-alert'
           custom: |
             {
               "blocks": [
@@ -23,4 +24,9 @@ jobs:
               ]
             }
           event: always
+workflows:
+  send-notification:
+    jobs:
+      - notify:
+          context: SLACK_WEBHOOK
 
