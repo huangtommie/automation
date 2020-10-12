@@ -27,7 +27,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - circleci-project-setup
 
     jobs:
       - newman-collection-run
