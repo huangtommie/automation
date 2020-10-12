@@ -1239,7 +1239,7 @@
 							"",
 							"pm.test(\"result is refund\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.error_message).to.eql('Order Status Error (C-A2)\\nCheck Order Status');",
+							"    pm.expect(jsonData.error_message).to.eql('Invalid Source (C-7)\\nRetry under proper network');",
 							"});",
 							"",
 							""
