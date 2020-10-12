@@ -7,28 +7,21 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - slack/notify:
-          channel: 'C01C5C7GY06'
           custom: |
             {
-	"blocks": [
-		{
-			"type": "section",
-			"text": {
-				"type": "plain_text",
-				"text": "This is a plain text section block.",
-				"emoji": true
-			}
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "plain_text",
-				"text": "This is a plain text section block.",
-				"emoji": true
-			}
-		}
-	]
-}
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
           event: always
 workflows:
   send-notification:
