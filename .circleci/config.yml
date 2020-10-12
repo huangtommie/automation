@@ -1,12 +1,16 @@
 version: '2.1'
 orbs:
   slack: circleci/slack@4.0
+  newman: postman/newman@1.0.0
 jobs:
-  test:
-    docker:
-      - image: 'cimg/base:stable'
+  newman-collection-run:
+    executor: newman/postman-newman-docker
     steps:
-      - run: newman run just_200.postman_collection.json -e production.postman_environment.json --reporters cli --bail newman
+      - checkout
+      - newman/newman-run:
+          collection: ./just_200.postman_collection.json
+          environment: ./production.postman_environment.json
+          iteration-data: ./data/just_200.csv
       - slack/notify:
           channel: 'C01C5C7GY06'
           template: basic_fail_1
@@ -15,7 +19,7 @@ jobs:
 workflows:
   test-and-notification:
     jobs:
-      - test
+      - newman-collection-run
         
           
 
