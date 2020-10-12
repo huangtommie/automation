@@ -1,4 +1,4 @@
-version: '2.1'
+version: 2.1
 orbs:
   slack: circleci/slack@4.0
   newman: postman/newman@0.0.2
@@ -23,7 +23,7 @@ workflows:
   test-and-notification:
     triggers:
       - schedule:
-          cron: "*/10 * * * *"
+          cron: "0,9,19,29,39,49,59 * * * *"
           filters:
             branches:
               only:
