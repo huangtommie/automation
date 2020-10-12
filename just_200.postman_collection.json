@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "576e7c16-d85f-49c2-bdb4-1fbc9a3f3a2a",
-		"name": "just 200",
+		"name": "just_200",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -1225,7 +1225,89 @@
 			},
 			"response": []
 		},
-
+		{
+			"name": "pos refund",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6744ef23-dbbb-44e6-b3f3-11900ba11868",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"result is refund\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error_message).to.eql('Order Status Error (C-A2)\\nCheck Order Status');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "C8AEE755",
+							"type": "text"
+						},
+						{
+							"key": "pos_local_time",
+							"value": "2020-03-06 21:46:52",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "huang monitor",
+							"type": "text"
+						},
+						{
+							"key": "refund_amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "note",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "transaction_id",
+							"value": "280024670226",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/posp/rest/refund",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"refund"
+					]
+				}
+			},
+			"response": []
+		}
 	],
 	"protocolProfileBehavior": {}
 }
