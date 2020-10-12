@@ -10,15 +10,15 @@ jobs:
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
-#   notify:
-#     docker:
-#       - image: 'cimg/base:stable'
-#     steps:
-#       - slack/notify:
-#           channel: 'C01C5C7GY06'
-#           template: basic_fail_1
-#           event: always
-#           mentions: '@huangxiaoqian'
+  notify:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - slack/notify:
+          channel: 'C01C5C7GY06'
+          template: basic_fail_1
+          event: always
+          mentions: '@huangxiaoqian'
 workflows:
   test-and-notification:
     triggers:
@@ -31,7 +31,7 @@ workflows:
 
     jobs:
       - newman-collection-run
-#     - notify
+    - notify
         
           
 
