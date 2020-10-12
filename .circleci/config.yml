@@ -23,7 +23,7 @@ workflows:
   test-and-notification:
     triggers:
       - schedule:
-          cron: '5 * * * *'
+          cron: '* * * * *'
           filters:
             branches:
               only:
