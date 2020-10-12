@@ -20,13 +20,18 @@ jobs:
 #           event: always
 #           mentions: '@huangxiaoqian'
 workflows:
-   test-and-notification:
-     triggers:
-       - schedule:
-            cron: "0 0/5 * * * ?"
-     jobs:
-       - newman-collection-run
-#      - notify
+  test-and-notification:
+    triggers:
+      - schedule:
+          cron: "* * * * *"
+          filters:
+            branches:
+              only:
+                - master
+
+    jobs:
+      - newman-collection-run
+#     - notify
         
           
 
