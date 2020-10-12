@@ -10,7 +10,6 @@ jobs:
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
-          iteration-data: ./data/just_200.csv
 #   notify:
 #     docker:
 #       - image: 'cimg/base:stable'
@@ -24,7 +23,7 @@ workflows:
   test-and-notification:
     jobs:
       - newman-collection-run
-#       - notify
+#     - notify
         
           
 
