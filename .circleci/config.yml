@@ -33,7 +33,7 @@ jobs:
 #               ]
 #             }
           event: always
-          mentions: '<@U0148JK5ZHQ>'
+          mentions: '<@U0148JK5ZHQ>,<@D013TS51LTZ>,<@D014EPUF9PE>'
           template: basic_fail_1
 #   notify:
 #     docker:
@@ -64,8 +64,8 @@ workflows:
   test-and-notification:
     triggers:
       - schedule:
-#           cron: "0,9,19,29,39,49,59 * * * *"
-          cron: "* * * * *"
+          cron: "0,9,19,29,39,49,59 * * * *"
+#           cron: "* * * * *"
           filters:
             branches:
               only:
