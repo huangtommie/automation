@@ -32,6 +32,7 @@ jobs:
               ]
             }
           event: always
+          mentions: '@Huang Xiaoqian'
         
           
 workflows:
