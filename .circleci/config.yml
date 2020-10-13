@@ -9,7 +9,7 @@ jobs:
       - run: 
           name: "install curl"
           command: |
-            su root
+            id
             apt install curl
       - checkout
       - newman/newman-run:
