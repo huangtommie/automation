@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: 
           name: "install curl"
-          command: apt-get install curl
+          command: apt install curl
       - checkout
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
