@@ -9,8 +9,7 @@ jobs:
       - run: 
           name: "install curl"
           command: |
-            id
-            apt install curl
+            apk add curl
       - checkout
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
