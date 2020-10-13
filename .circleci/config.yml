@@ -32,7 +32,7 @@ jobs:
               ]
             }
           event: always
-          mentions: '@Huang Xiaoqian'
+          mentions: '<@U0148JK5ZHQ>'
         
           
 workflows:
