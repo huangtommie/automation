@@ -927,9 +927,9 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"result is wechat\", function () {",
+							"pm.test(\"result is inquire\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.method).to.eql('WeChat');",
+							"    pm.expect(jsonData.result).to.eql('success');",
 							"});",
 							""
 						],
@@ -956,46 +956,19 @@
 							"type": "text"
 						},
 						{
-							"key": "barcode",
-							"value": "134616056466367489",
-							"type": "text"
-						},
-						{
-							"key": "total",
-							"value": "1",
+							"key": "transaction_id",
+							"value": "280024909875",
 							"type": "text"
 						},
 						{
 							"key": "pos_local_time",
-							"value": "2020-03-06 15:58:42",
-							"type": "text"
-						},
-						{
-							"key": "currency",
-							"value": "USD",
-							"type": "text"
-						},
-						{
-							"key": "reference",
-							"value": "huang monitor",
+							"value": "2020-02-17 16:57:23",
 							"type": "text"
 						},
 						{
 							"key": "note",
 							"value": "test",
 							"type": "text"
-						},
-						{
-							"key": "nonce",
-							"value": "1111",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "hash",
-							"value": "298b347e930866434a85cd7c7fe0eece",
-							"type": "text",
-							"disabled": true
 						}
 					],
 					"options": {
@@ -1005,7 +978,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{url}}/posp/rest/pay",
+					"raw": "https://{{url}}/posp/rest/inquire",
 					"protocol": "https",
 					"host": [
 						"{{url}}"
@@ -1013,7 +986,7 @@
 					"path": [
 						"posp",
 						"rest",
-						"pay"
+						"inquire"
 					]
 				}
 			},
