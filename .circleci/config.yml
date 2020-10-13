@@ -4,16 +4,14 @@ orbs:
   newman: postman/newman@0.0.2
 jobs:
   newman-collection-run:
+    docker:
+      - image: 'cimg/base:stable'
     executor: newman/postman-newman-docker
     steps:
       - checkout
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
-  notify:
-    docker:
-      - image: 'cimg/base:stable'
-    steps:
       - slack/notify:
           channel: 'C01C5C7GY06'
           custom: |
@@ -33,6 +31,29 @@ jobs:
             }
           event: always
           mentions: '@U0148JK5ZHQ'
+#   notify:
+#     docker:
+#       - image: 'cimg/base:stable'
+#     steps:
+#       - slack/notify:
+#           channel: 'C01C5C7GY06'
+#           custom: |
+#             {
+#               "blocks": [
+#                 {
+#                   "type": "section",
+#                   "fields": [
+#                     {
+#                       "type": "plain_text",
+#                       "text": "*This is a text notification*",
+#                       "emoji": true
+#                     }
+#                   ]
+#                 }
+#               ]
+#             }
+#           event: always
+#           mentions: '@U0148JK5ZHQ'
         
           
 workflows:
@@ -48,6 +69,6 @@ workflows:
 
     jobs:
       - newman-collection-run
-      - notify
+#       - notify
         
 
