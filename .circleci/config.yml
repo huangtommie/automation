@@ -38,8 +38,8 @@ workflows:
   test-and-notification:
     triggers:
       - schedule:
-          cron: "0,9,19,29,39,49,59 * * * *"
-#           cron: "* * * * *"
+#           cron: "0,9,19,29,39,49,59 * * * *"
+          cron: "* * * * *"
           filters:
             branches:
               only:
