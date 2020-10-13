@@ -4,10 +4,9 @@ orbs:
   newman: postman/newman@0.0.2
 jobs:
   newman-collection-run:
-    docker:
-      - image: 'cimg/base:stable'
     executor: newman/postman-newman-docker
     steps:
+      -run: apt-get install curl
       - checkout
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
