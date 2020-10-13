@@ -10,6 +10,7 @@ jobs:
           name: "install curl"
           command: |
             apk add curl
+            apk add jq
       - checkout
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
