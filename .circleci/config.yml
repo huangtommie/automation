@@ -32,7 +32,7 @@ jobs:
               ]
             }
           event: always
-          mentions: '<@U0148JK5ZHQ>'
+          mentions: '@U0148JK5ZHQ'
         
           
 workflows:
