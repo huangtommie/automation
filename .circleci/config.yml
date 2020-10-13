@@ -32,7 +32,7 @@ jobs:
               ]
             }
           event: always
-          mentions: '@huangxiaoqian'
+        
           
 workflows:
   test-and-notification:
