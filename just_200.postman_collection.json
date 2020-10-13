@@ -927,9 +927,9 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"result is inquire\", function () {",
+							"pm.test(\"result is pos\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.result).to.eql('success');",
+							"    pm.expect(jsonData.code).to.eql('00');",
 							"});",
 							""
 						],
@@ -958,6 +958,83 @@
 						{
 							"key": "transaction_id",
 							"value": "280024909875",
+							"type": "text"
+						},
+						{
+							"key": "pos_local_time",
+							"value": "2020-02-17 16:57:23",
+							"type": "text"
+						},
+						{
+							"key": "note",
+							"value": "test",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/posp/rest/inquire",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posp",
+						"rest",
+						"inquire"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paypal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21db37ce-7426-436e-8728-ee6cfe64ec1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"result is paypal\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.code).to.eql('PV06');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "E2D340F7",
+							"type": "text"
+						},
+						{
+							"key": "transaction_id",
+							"value": "280024904953",
 							"type": "text"
 						},
 						{
@@ -1034,109 +1111,6 @@
 						{
 							"key": "barcode",
 							"value": "hQVDUFY",
-							"type": "text"
-						},
-						{
-							"key": "total",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "pos_local_time",
-							"value": "2020-03-06 15:58:42",
-							"type": "text"
-						},
-						{
-							"key": "currency",
-							"value": "USD",
-							"type": "text"
-						},
-						{
-							"key": "reference",
-							"value": "huang monitor",
-							"type": "text"
-						},
-						{
-							"key": "note",
-							"value": "test",
-							"type": "text"
-						},
-						{
-							"key": "nonce",
-							"value": "1111",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "hash",
-							"value": "298b347e930866434a85cd7c7fe0eece",
-							"type": "text",
-							"disabled": true
-						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://{{url}}/posp/rest/pay",
-					"protocol": "https",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"posp",
-						"rest",
-						"pay"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "paypal",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "a2e4906e-58de-40d0-a049-e97b2802fc41",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"pm.test(\"result is paypal\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.method).to.eql('paypal');",
-							"});",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "token",
-							"value": "E2D340F7",
-							"type": "text"
-						},
-						{
-							"key": "barcode",
-							"value": "79435435345",
 							"type": "text"
 						},
 						{
@@ -1276,6 +1250,45 @@
 						"posp",
 						"rest",
 						"refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e66137cc-9550-48b6-8e5a-1dc78139fdc9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"result is dashboard\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dashboard2.citconpay.com/api/all_transactions_search",
+					"protocol": "https",
+					"host": [
+						"dashboard2",
+						"citconpay",
+						"com"
+					],
+					"path": [
+						"api",
+						"all_transactions_search"
 					]
 				}
 			},
