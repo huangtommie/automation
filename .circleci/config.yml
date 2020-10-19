@@ -6,33 +6,59 @@ jobs:
   newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
+      - run: 
+          name: "install curl"
+          command: |
+            apk add curl
+            apk add jq
       - checkout
       - newman/newman-run:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
-  notify:
-    docker:
-      - image: 'cimg/base:stable'
-    steps:
       - slack/notify:
           channel: 'C01C5C7GY06'
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*This is a text notification*",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
-          mentions: '@huangxiaoqian'
+#           custom: |
+#             {
+#               "blocks": [
+#                 {
+#                   "type": "section",
+#                   "fields": [
+#                     {
+#                       "type": "plain_text",
+#                       "text": "*This is a text notification*",
+#                       "emoji": true
+#                     }
+#                   ]
+#                 }
+#               ]
+#             }
+          event: fail
+          mentions: '<@U0148JK5ZHQ>,<@U013J7KQQLX>,<@U013HENHGF9>'
+          template: basic_fail_1
+#   notify:
+#     docker:
+#       - image: 'cimg/base:stable'
+#     steps:
+#       - slack/notify:
+#           channel: 'C01C5C7GY06'
+#           custom: |
+#             {
+#               "blocks": [
+#                 {
+#                   "type": "section",
+#                   "fields": [
+#                     {
+#                       "type": "plain_text",
+#                       "text": "*This is a text notification*",
+#                       "emoji": true
+#                     }
+#                   ]
+#                 }
+#               ]
+#             }
+#           event: always
+#           mentions: '@U0148JK5ZHQ'
+        
           
 workflows:
   test-and-notification:
@@ -47,6 +73,6 @@ workflows:
 
     jobs:
       - newman-collection-run
-      - notify
+#       - notify
         
 
