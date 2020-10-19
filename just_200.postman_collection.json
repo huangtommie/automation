@@ -6,130 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "chop-alipay",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7088c3ee-859a-4bc3-9faa-fe914a757501",
-						"exec": [
-							"",
-							"",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"let qstring = pm.response.json().url.split('=')[1];",
-							"console.log(qstring)",
-							"pm.test(\"qstring is not empty\", function(){",
-							"    pm.expect(qstring).not.eql('');",
-							"})"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "c7e5945b-caf8-458b-adf5-563584e0d6c9",
-						"exec": [
-							"let vendor = pm.iterationData.get(\"vendor\");",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{chop_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "payment_method",
-							"value": "alipay",
-							"type": "text"
-						},
-						{
-							"key": "amount",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "currency",
-							"value": "USD",
-							"type": "text"
-						},
-						{
-							"key": "reference",
-							"value": "huang monitor",
-							"type": "text"
-						},
-						{
-							"key": "ipn_url",
-							"value": "http://merchant.com/ipn",
-							"type": "text"
-						},
-						{
-							"key": "callback_url_success",
-							"value": "http://merchant.com/success",
-							"type": "text"
-						},
-						{
-							"key": "callback_url_fail",
-							"value": "http://merchant.com/fail",
-							"type": "text"
-						},
-						{
-							"key": "mobile_result_url",
-							"value": "http://merchant.com/mobile_confirm?reference=jkh25jh1348fd89sg",
-							"type": "text"
-						},
-						{
-							"key": "allow_duplicates",
-							"value": "yes",
-							"type": "text"
-						},
-						{
-							"key": "client_country",
-							"value": "",
-							"type": "text",
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "https://{{url}}/chop/chop",
-					"protocol": "https",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"chop",
-						"chop"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "chop-wechatpay",
 			"event": [
 				{
@@ -156,7 +32,6 @@
 					"script": {
 						"id": "4b250a9d-22c5-4524-8c7a-bb410d1b55e8",
 						"exec": [
-							"let vendor = pm.iterationData.get(\"vendor\");",
 							""
 						],
 						"type": "text/javascript"
@@ -236,6 +111,131 @@
 							"value": "",
 							"type": "text",
 							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/chop/chop",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"chop",
+						"chop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chop-wechatpay-cn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f71f9e4b-6d81-4bc4-bed9-a9b32c6e87a4",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"let qstring = pm.response.json().url.split('=')[1];",
+							"console.log(qstring)",
+							"pm.test(\"qstring is not empty\", function(){",
+							"    pm.expect(qstring).not.eql('');",
+							"})",
+							"pm.test(\"url is cn\", function(){",
+							"    pm.expect(pm.response.json().url).contains('api.citconpay.cn');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "07aa607e-c7a5-481b-9c5f-c9561957b401",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{chop_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "payment_method",
+							"value": "wechatpay",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "huang monitor",
+							"type": "text"
+						},
+						{
+							"key": "ipn_url",
+							"value": "http://merchant.com/ipn",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_success",
+							"value": "http://merchant.com/success",
+							"type": "text"
+						},
+						{
+							"key": "callback_url_fail",
+							"value": "http://merchant.com/fail",
+							"type": "text"
+						},
+						{
+							"key": "mobile_result_url",
+							"value": "http://merchant.com/mobile_confirm?reference=jkh25jh1348fd89sg",
+							"type": "text"
+						},
+						{
+							"key": "allow_duplicates",
+							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "CN",
+							"type": "text"
 						}
 					]
 				},
@@ -752,6 +752,9 @@
 							"",
 							"pm.test(\"qstring is not empty\", function(){",
 							"    pm.expect(qstring).not.eql('0&');",
+							"})",
+							"pm.test(\"url is cn\", function(){",
+							"    pm.expect(pm.response.text()).contains('api.citconpay.cn');",
 							"})"
 						],
 						"type": "text/javascript"
@@ -819,6 +822,127 @@
 						{
 							"key": "allow_duplicates",
 							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "CN",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{url}}/payment/pay_qr",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"payment",
+						"pay_qr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mobilepay-cn",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "704e77e4-d228-46f3-b1a0-660a39e105e6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "414665df-1035-4d36-b7bb-7a6bf434d7d6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"let qstring = pm.response.text().split('=')[1];",
+							"",
+							"pm.test(\"qstring is not empty\", function(){",
+							"    pm.expect(qstring).not.eql('0&');",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "vendor",
+							"value": "alipay",
+							"type": "text"
+						},
+						{
+							"key": "reference",
+							"value": "huang monitor",
+							"type": "text"
+						},
+						{
+							"key": "ipn_url",
+							"value": "http://47.240.46.69:3002/notify",
+							"type": "text"
+						},
+						{
+							"key": "callback_url",
+							"value": "https://www.baidu.com",
+							"type": "text"
+						},
+						{
+							"key": "allow_duplicates",
+							"value": "yes",
+							"type": "text"
+						},
+						{
+							"key": "client_country",
+							"value": "CN",
 							"type": "text"
 						}
 					]
