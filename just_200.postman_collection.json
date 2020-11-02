@@ -1760,9 +1760,9 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"pay status is null\", function () {",
+									"pm.test(\"P0007647680-9256e802772834f0b30c\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.status).to.eql(null);",
+									"    pm.expect(jsonData.id).to.eql('P0007647680-9256e802772834f0b30c');",
 									"});"
 								],
 								"type": "text/javascript"
@@ -4170,9 +4170,9 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Order Status Error (C-A2)\\nCheck Order Status\", function () {\r",
+									"pm.test(\"Invalid Source (C-7)\\nRetry under proper network\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error_message).to.eql('Order Status Error (C-A2)\\nCheck Order Status');\r",
+									"    pm.expect(jsonData.error_message).to.eql('Invalid Source (C-7)\\nRetry under proper network');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5143,41 +5143,7 @@
 							"script": {
 								"id": "74e8bfa7-b3d4-41aa-b289-2546ff459ce8",
 								"exec": [
-									"\r",
-									"if (!pm.globals.has(\"forgeJS\")) {\r",
-									"    pm.sendRequest(\"http://xiaoqi.internal.citconpay.com/forge.js\", function (err, res) {\r",
-									"        if (err) {\r",
-									"            console.log(err);\r",
-									"        } else {\r",
-									"            pm.globals.set(\"forgeJS\", res.text());\r",
-									"            \r",
-									"        }\r",
-									"    })\r",
-									"    \r",
-									"}else{\r",
-									"    \r",
-									"\r",
-									"    eval(pm.globals.get(\"forgeJS\"))\r",
-									"    const public_key = '-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA43y16q23dZRKYbQ8jAe1NcidYqTODT1ore9PfIHlIOeyRKVw5J0BH0YAL1nxA1LnHfSyaEkOIBgvaGOBqR0cXhQ8F0tcH35idTtOjcIi4qHSSP9/0K7I0y03Sro+OmSbIpZQQ1RrKqnwBzSq1SsCV5FuVl+03pBH64sFTDEYz1r5efFTjCHL8CVNjT8C1N7L+fgKFxIXP72SJ2am/zNM8mZMs/ZtfRTY9pEXmHpxRn4eAUAqY583PnMoxE+mbmcstqzg2Nym5n37rPYdIbw4E5d/UatCGXV2N5L0Yo+IBgTdC0QeZsvOszYeipDCiKPmWjhJeMUF9KTRbeqXrInzguLD7JFf/t1B0fUQLjed9Cg1agawv6BIa5l6ZFyT+Dg2noeCP6/rZ5+M7Y/DkwR94own4zB/QK9LzFnZzDhlSqCjcg02aKTWD1jUSsb5jkhbBSs92JzdqwUTw/rjHwsj3okueuim0sIXTL4KU/+k6ezQqz+KotZ1WEJ+cqj3/s4zzZ71mPuges9rygy+uu1dIIhjgdfUoO4zzIZN8RJy27x/pqmFx4l4lTNxkLPD0lyhue2uKpBeejYMnbH6waiQUzDFACifoqjFEXB+cWbGzmfVgr2uBlckTUroYGsyV/vGHiJ+CFjA9BjJq49XPomXS4aZm8i2wqI9KTiCmuHxMqECAwEAAQ==-----END PUBLIC KEY-----';\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									"    var publicKey = forge.pki.publicKeyFromPem(public_key);\r",
-									"    \r",
-									"    var encryptedText = forge.util.encode64(publicKey.encrypt(\"card_number=370000000000002&exp_date=1222&cvv2cvc2=2222&avs_zip=22222&first_name=xiaoqian&last_name=huang&avs_address=111&address2=222&city=city&state=state&country=country&email=email@22.com\"\r",
-									"    ));\r",
-									"    console.log(\"encrypted text:\" + encryptedText);\r",
-									"    \r",
-									"let data = pm.globals.set(\"data\",encryptedText);\r",
-									"\r",
-									"\r",
-									"\r",
-									"   \r",
-									"\r",
-									"\r",
-									"}"
+									""
 								],
 								"type": "text/javascript"
 							}
