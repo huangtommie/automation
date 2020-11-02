@@ -1760,10 +1760,10 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"P0007647680-9256e802772834f0b30c\", function () {",
+									"pm.test(\"Invalid source. Please contact Citcon.\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData)",
-									"    pm.expect(jsonData.id).to.eql('P0007647680-9256e802772834f0b30c');",
+									"    ",
+									"    pm.expect(jsonData.message).to.eql('Invalid source. Please contact Citcon.');",
 									"});"
 								],
 								"type": "text/javascript"
@@ -4958,10 +4958,10 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"P0002975307-4cc5308b8d691049b1a6\", function () {\r",
+									"pm.test(\"Invalid source. Please contact Citcon.\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    console.log(jsonData)\r",
-									"    pm.expect(jsonData.id).to.eql('P0002975307-4cc5308b8d691049b1a6');\r",
+									"   \r",
+									"    pm.expect(jsonData.message).to.eql('Invalid source. Please contact Citcon.');\r",
 									"});"
 								],
 								"type": "text/javascript"
