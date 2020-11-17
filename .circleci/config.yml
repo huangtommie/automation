@@ -63,14 +63,14 @@ jobs:
           
 workflows:
   test-and-notification:
-    triggers:
-      - schedule:
-          cron: "0 0-23 * * *"
+#     triggers:
+#       - schedule:
+#           cron: "0 0-23 * * *"
 
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
+#           filters:
+#             branches:
+#               only:
+#                 - circleci-project-setup
 
     jobs:
       - newman-collection-run
