@@ -64,7 +64,7 @@ workflows:
   test-and-notification:
     triggers:
       - schedule:
-          cron: "0,29,59 * * * *"
+#          cron: "0 0-23 * * *"
 #           cron: "* * * * *"
           filters:
             branches:
