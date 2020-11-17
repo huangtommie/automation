@@ -1401,7 +1401,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{cc_token}}",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -1673,9 +1673,9 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Your test name\", function () {\r",
+									"pm.test(\"Invalid source. Please contact Citcon.\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.status).to.eql('refund amount greater than payment amount');\r",
+									"    pm.expect(jsonData.status).to.eql('Invalid source. Please contact Citcon.');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1729,7 +1729,7 @@
 								},
 								{
 									"key": "transaction_id",
-									"value": "P0004416331-04f70c1986bd8692c4c8",
+									"value": "P0000088243-dcca6952675c33d10c42",
 									"type": "text"
 								}
 							]
@@ -1812,7 +1812,7 @@
 								},
 								{
 									"key": "transaction_id",
-									"value": "P0007647680-9256e802772834f0b30c",
+									"value": "P0000088243-dcca6952675c33d10c42",
 									"type": "text"
 								}
 							]
@@ -3825,10 +3825,18 @@
 								},
 								{
 									"key": "transaction_id",
-									"value": "280024890466",
+									"value": "280024944044",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "GBP",
 									"type": "text"
 								}
-							]
+							],
+							"options": {
+								"urlencoded": {}
+							}
 						},
 						"url": {
 							"raw": "https://{{url}}/posp/rest/refund",
@@ -4998,7 +5006,7 @@
 							"urlencoded": [
 								{
 									"key": "transaction_id",
-									"value": "P0002975307-4cc5308b8d691049b1a6",
+									"value": "P0003486112-41ed9f0b7923d210ac23",
 									"type": "text"
 								},
 								{
@@ -5039,10 +5047,34 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Key expired, please send a new reference\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error_message).to.eql('Key expired, please send a new reference');\r",
+									"pm.test(\"pulicKey is exist\", function () {\r",
+									"    var publicKey = pm.response.json().public_key;\r",
+									"    pm.expect(publicKey).to.not.be.empty;\r",
+									"    publicKey = publicKey.replace(/\\//g,\"/\");\r",
+									"    pm.globals.set(\"publicKey\",publicKey);\r",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c9401349-655d-4acb-a974-5a45b18f3c4b",
+								"exec": [
+									"function RandomRange(min, max) {\r",
+									"    var returnStr = \"\",\r",
+									"\trange = (max ? Math.round(Math.random() * (max-min)) + min : min),\r",
+									"\tarr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd','e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];\r",
+									"\tfor(var i=0; i<range; i++){\r",
+									"\t    var index = Math.round(Math.random() * (arr.length-1));\r",
+									"\t    returnStr += arr[index];\r",
+									"\t}\r",
+									"\treturn returnStr;\r",
+									"}\r",
+									"\r",
+									"RandomRange(1,25)\r",
+									"pm.variables.set(\"reference\", RandomRange(1,25));"
 								],
 								"type": "text/javascript"
 							}
@@ -5054,7 +5086,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{cc_token}}",
 									"type": "string"
 								}
 							]
@@ -5093,7 +5125,7 @@
 								},
 								{
 									"key": "reference",
-									"value": "11223344",
+									"value": "{{reference}}",
 									"type": "text"
 								},
 								{
@@ -5158,9 +5190,9 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Key expired, please send a new reference\", function () {\r",
+									"pm.test(\"Must pass in token or card info\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error_message).to.eql('Key expired, please send a new reference');\r",
+									"    pm.expect(jsonData.error_message).to.eql('Must pass in token or card info');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5212,7 +5244,7 @@
 								},
 								{
 									"key": "reference",
-									"value": "112233442",
+									"value": "{{reference}}",
 									"type": "text"
 								},
 								{
@@ -5288,42 +5320,510 @@
 		},
 		{
 			"name": "dashboard",
-			"event": [
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "e66137cc-9550-48b6-8e5a-1dc78139fdc9",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"pm.test(\"result is dashboard\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.code).to.eql(400);\r",
-							"});"
+					"name": "dashboard-login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e66137cc-9550-48b6-8e5a-1dc78139fdc9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"login success\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('User Login Successful!');\r",
+									"});\r",
+									"let session_id = pm.response.json().session_id\r",
+									"pm.globals.set('session_id',session_id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"CITCON AG\",\"password\":\"ba43f1231b0147d790e3cb925aaa9820\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/login",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-transactions lookup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4069b5e0-eee4-4bae-be8b-79eb3b848170",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"merchantId\":\"634201708355000\",\"sessionId\":\"{{session_id}}\",\"rowCount\":10,\"pageNumber\":0,\"startDate\":\"\",\"endDate\":\"\",\"searchKey\":\"\",\"hierarchy\":9930,\"selectedMid\":9930}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/transactions_lookup",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"transactions_lookup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-all transactions search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bbc79410-d6fe-4bab-86bf-04e4303aa1d9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"sessionId\":\"{{session_id}}\",\"rowCount\":10,\"pageNumber\":0,\"startDate\":\"2020-10-25\",\"endDate\":\"2020-11-01\",\"searchKey\":\"\",\"timezone\":\"America/Los_Angeles\",\"download\":false}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/all_transactions_search",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"all_transactions_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-summary-daily",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8722af3-5bbf-4656-b4ea-3e249f41f960",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"code is 200\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"hierarchy_user_id\":9930,\"merchantId\":\"634201708355000\",\"session_id\":\"{{session_id}}\",\"search_type\":\"daily\",\"date_month\":\"\",\"page_number\":\"0\",\"row_count\":10}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/tranx/summary",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"tranx",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-download records",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4264223-d56b-4f29-998e-5853850d44b8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"merchantId\":\"634201708355000\",\"sessionId\":\"{{session_id}}\",\"rowCount\":10,\"pageNumber\":0,\"startDate\":\"\",\"endDate\":\"\",\"searchKey\":\"\",\"hierarchy\":9930,\"selectedMid\":9930}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/download_records",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"download_records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-summary-detail daily report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8974f6b6-c3d8-48e9-a600-abda92aaf50b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"merchantId\":\"634201708355000\",\"date\":\"2020-10-29\",\"sessionId\":\"{{session_id}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/detail_daily_report",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"detail_daily_report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-summary-detail month report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d68fbfe-7383-43a7-8014-701c2e51490c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"merchantId\":\"634201708355000\",\"month\":\"Oct 2020\",\"sessionId\":\"{{session_id}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/detail_month_report",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"detail_month_report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-summary-monthly",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "381f72f5-9df0-4aff-bcb4-e333a62b0976",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"code is 200\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"hierarchy_user_id\":9930,\"merchantId\":\"634201708355000\",\"session_id\":\"{{session_id}}\",\"search_type\":\"monthly\",\"date_month\":\"\",\"page_number\":\"0\",\"row_count\":10}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/tranx/summary",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"tranx",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-change password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47dc1787-41f3-45d3-bfcb-0112f996fbcd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"code is 200\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.code).to.eql('0000');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session_token",
+								"value": "{{session_id}}",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript"
-					}
+						"body": {
+							"mode": "raw",
+							"raw": "{\"oldpassword\":\"ba43f1231b0147d790e3cb925aaa9820\",\"newpassword\":\"ba43f1231b0147d790e3cb925aaa9820\",\"confirmpassword\":\"ba43f1231b0147d790e3cb925aaa9820\",\"email\":\"CITCON AG\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/change_password",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9bb4e93-67ee-4f6b-b801-c8a76e375001",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"code is 200\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('User logged out successfully');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"CITCON AG\",\"sessionId\":\"{{session_id}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/logout",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-forgot password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c42d33d8-a58e-4ac6-9160-cebbe7013514",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"code is 200\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql('Password reset email was sent to your email address. Please follow the instruciton in the email to reset your password.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"CITCON AG\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{dashboard}}/api/forgot_password",
+							"protocol": "https",
+							"host": [
+								"{{dashboard}}"
+							],
+							"path": [
+								"api",
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "https://dashboard2.citconpay.com/api/all_transactions_search",
-					"protocol": "https",
-					"host": [
-						"dashboard2",
-						"citconpay",
-						"com"
-					],
-					"path": [
-						"api",
-						"all_transactions_search"
-					]
-				}
-			},
-			"response": []
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
