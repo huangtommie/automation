@@ -16,7 +16,7 @@ jobs:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
       - slack/notify:
-          branch_pattern: circleci-project-setup
+#           branch_pattern: circleci-project-setup
           channel: 'C01C5C7GY06'
 #           custom: |
 #             {
@@ -66,8 +66,8 @@ workflows:
  test-and-notification:
     triggers:
       - schedule:
-#          cron: "0 0-23 * * *"
-          cron: "0,5,10,20,30,40,50,59 0-23 * * *"
+          cron: "0 0-23 * * *"
+#           cron: "0,5,10,20,30,40,50,59 0-23 * * *"
 
           filters:
             branches:
