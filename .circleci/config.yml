@@ -33,7 +33,8 @@ jobs:
 #               ]
 #             }
           event: fail
-          mentions: '<@U0148JK5ZHQ>,<@U013J7KQQLX>,<@U013HENHGF9>'
+#           mentions: '<@U0148JK5ZHQ>,<@U013J7KQQLX>,<@U013HENHGF9>'
+          mentions: '<@U0148JK5ZHQ>'
           template: basic_fail_1
 #   notify:
 #     docker:
