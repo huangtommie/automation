@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  slack: circleci/slack@4.0
+  slack: circleci/slack@4.0.1
   newman: postman/newman@0.0.2
 jobs:
   newman-collection-run:
@@ -16,7 +16,8 @@ jobs:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
       - slack/notify:
-#          channel: 'C01C5C7GY06'
+#           branch_pattern: circleci-project-setup
+#           channel: 'C01C5C7GY06'
 #           custom: |
 #             {
 #               "blocks": [
@@ -33,7 +34,8 @@ jobs:
 #               ]
 #             }
           event: fail
-          mentions: '<@U0148JK5ZHQ>,<@U013J7KQQLX>,<@U013HENHGF9>'
+#           mentions: '<@U0148JK5ZHQ>,<@U013J7KQQLX>,<@U013HENHGF9>'
+          mentions: '<@U0148JK5ZHQ>'
           template: basic_fail_1
 #   notify:
 #     docker:
@@ -61,10 +63,11 @@ jobs:
         
           
 workflows:
-  test-and-notification:
+ test-and-notification:
     triggers:
       - schedule:
-#          cron: "0 0-23 * * *"
+          cron: "0 0-23 * * *"
+#           cron: "0,5,10,20,30,40,50,59 0-23 * * *"
 
           filters:
             branches:
@@ -74,5 +77,3 @@ workflows:
     jobs:
       - newman-collection-run
 #       - notify
-        
-
