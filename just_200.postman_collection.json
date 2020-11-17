@@ -5332,6 +5332,7 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"console.log(pm.request.json())\r",
 									"console.log(pm.response.json())\r",
 									"pm.test(\"login success\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
@@ -5344,6 +5345,9 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
