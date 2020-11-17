@@ -5332,7 +5332,7 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"console.log(pm.response)\r",
+									"console.log(pm.response.json())\r",
 									"pm.test(\"login success\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.message).to.eql('User Login Successful!');\r",
