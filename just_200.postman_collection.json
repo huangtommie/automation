@@ -5263,11 +5263,19 @@
 						}
 					],
 					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"email\":\"CITCON AG\",\"password\":\"ba43f1231b0147d790e3cb925aaa9820\"}",
@@ -5310,7 +5318,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"merchantId\":\"634201708355000\",\"sessionId\":\"{{session_id}}\",\"rowCount\":10,\"pageNumber\":0,\"startDate\":\"\",\"endDate\":\"\",\"searchKey\":\"\",\"hierarchy\":9930,\"selectedMid\":9930}",
@@ -5353,7 +5367,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"sessionId\":\"{{session_id}}\",\"rowCount\":10,\"pageNumber\":0,\"startDate\":\"2020-10-25\",\"endDate\":\"2020-11-01\",\"searchKey\":\"\",\"timezone\":\"America/Los_Angeles\",\"download\":false}",
@@ -5399,7 +5419,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"hierarchy_user_id\":9930,\"merchantId\":\"634201708355000\",\"session_id\":\"{{session_id}}\",\"search_type\":\"daily\",\"date_month\":\"\",\"page_number\":\"0\",\"row_count\":10}",
@@ -5443,7 +5469,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"merchantId\":\"634201708355000\",\"sessionId\":\"{{session_id}}\",\"rowCount\":10,\"pageNumber\":0,\"startDate\":\"\",\"endDate\":\"\",\"searchKey\":\"\",\"hierarchy\":9930,\"selectedMid\":9930}",
@@ -5486,7 +5518,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"merchantId\":\"634201708355000\",\"date\":\"2020-10-29\",\"sessionId\":\"{{session_id}}\"}",
@@ -5529,7 +5567,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"merchantId\":\"634201708355000\",\"month\":\"Oct 2020\",\"sessionId\":\"{{session_id}}\"}",
@@ -5575,7 +5619,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"hierarchy_user_id\":9930,\"merchantId\":\"634201708355000\",\"session_id\":\"{{session_id}}\",\"search_type\":\"monthly\",\"date_month\":\"\",\"page_number\":\"0\",\"row_count\":10}",
@@ -5627,6 +5677,11 @@
 								"key": "session_token",
 								"value": "{{session_id}}",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5674,7 +5729,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"email\":\"CITCON AG\",\"sessionId\":\"{{session_id}}\"}",
@@ -5720,7 +5781,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\"email\":\"CITCON AG\"}",
