@@ -4678,7 +4678,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "{{terminal_code}}",
+									"value": "C8AEE755",
 									"type": "text"
 								},
 								{
@@ -4748,7 +4748,7 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "{{terminal_code}}",
+									"value": "C8AEE755",
 									"type": "text"
 								},
 								{
