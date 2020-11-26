@@ -2509,7 +2509,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "ams",
+			"name": "ams online",
 			"item": [
 				{
 					"name": "ams pay",
@@ -2983,6 +2983,28 @@
 					"response": []
 				}
 			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7744741d-7101-4977-808d-187bc8727975",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a8ee345-23c5-4fd0-b9c8-2ddc0aea3f5a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		},
 		{
@@ -3102,12 +3124,12 @@
 							"urlencoded": [
 								{
 									"key": "token",
-									"value": "C8AEE755",
+									"value": "{{terminal_code}}",
 									"type": "text"
 								},
 								{
 									"key": "barcode",
-									"value": "2855",
+									"value": "284358245383258502",
 									"type": "text"
 								},
 								{
@@ -3277,7 +3299,7 @@
 								},
 								{
 									"key": "transaction_id",
-									"value": "280024670219",
+									"value": "280024979224",
 									"type": "text"
 								}
 							]
@@ -3337,7 +3359,7 @@
 								},
 								{
 									"key": "transaction_id",
-									"value": "280024670219",
+									"value": "280024979224",
 									"type": "text"
 								},
 								{
@@ -3403,7 +3425,7 @@
 								},
 								{
 									"key": "transaction_id",
-									"value": "280024670219",
+									"value": "280024979224",
 									"type": "text"
 								},
 								{
@@ -3572,6 +3594,353 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ams offline",
+			"item": [
+				{
+					"name": "ams offline-pay",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ad0b22d5-53a2-4d14-bb2f-bdcc1cf4362c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"result is pos\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.error_message).to.eql('payment in process');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "{{terminal_ams}}",
+									"type": "text"
+								},
+								{
+									"key": "barcode",
+									"value": "285345586370357235",
+									"type": "text"
+								},
+								{
+									"key": "total",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "pos_local_time",
+									"value": "2020-03-06 15:58:42",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "huang monitor",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "nonce",
+									"value": "1111",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "hash",
+									"value": "298b347e930866434a85cd7c7fe0eece",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url}}/posp/rest/pay",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posp",
+								"rest",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ams offline_refund",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a90fa4b-0793-42bc-80a6-2429d3f7d3a7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Invalid Source (C-7)\\nRetry under proper network\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error_message).to.eql('Invalid Source (C-7)\\nRetry under proper network');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "{{terminal_ams}}",
+									"type": "text"
+								},
+								{
+									"key": "pos_local_time",
+									"value": "2020-03-06 21:46:52",
+									"type": "text"
+								},
+								{
+									"key": "transaction_reference",
+									"value": "huangrefund",
+									"type": "text"
+								},
+								{
+									"key": "refund_amount",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "transaction_id",
+									"value": "280024979246",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/posp/rest/refund",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posp",
+								"rest",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ams offline_cancel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ee8001f-4974-4fd9-ba67-b75d8048af6e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Cancellation Failed (C-E5)\\nOrder payment refunded\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql('E5');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "{{terminal_ams}}",
+									"type": "text"
+								},
+								{
+									"key": "transaction_id",
+									"value": "280024979246",
+									"type": "text"
+								},
+								{
+									"key": "transaction_reference",
+									"value": "ddd",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/posp/rest/cancel",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posp",
+								"rest",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ams offline_inquire",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b2b7147-0ad9-46b7-8a4d-a219c6490012",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"code is 00\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.code).to.eql('00');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "{{terminal_ams}}",
+									"type": "text"
+								},
+								{
+									"key": "transaction_id",
+									"value": "280024979246",
+									"type": "text"
+								},
+								{
+									"key": "pos_local_time",
+									"value": "2020-02-17 16:57:23",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/posp/rest/inquire",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"posp",
+								"rest",
+								"inquire"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c980642b-d339-42bb-b0f4-fc8b44e3f132",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a1e3310-e3d4-46ce-9e09-2b02ba8fe7f2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
