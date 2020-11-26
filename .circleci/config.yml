@@ -16,8 +16,8 @@ jobs:
           collection: ./just_200.postman_collection.json
           environment: ./production.postman_environment.json
       - slack/notify:
-#           branch_pattern: circleci-project-setup
-#           channel: 'C01C5C7GY06'
+          branch_pattern: circleci-project-setup
+          channel: 'C01C5C7GY06'
 #           custom: |
 #             {
 #               "blocks": [
