@@ -2969,7 +2969,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/pay_qr",
+							"raw": "https://{{url}}/payment/pay",
 							"protocol": "https",
 							"host": [
 								"{{url}}"
