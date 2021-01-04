@@ -3611,12 +3611,8 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"result is pos\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.error_message).to.eql('payment in process');",
-									"});",
-									""
+									"});"
+							
 								],
 								"type": "text/javascript"
 							}
