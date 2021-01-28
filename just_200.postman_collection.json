@@ -3548,10 +3548,6 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"result is pos\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.error_message).to.eql('payment in process');",
-									"});",
 									""
 								],
 								"type": "text/javascript"
@@ -3578,7 +3574,7 @@
 								},
 								{
 									"key": "barcode",
-									"value": "285345586370357235",
+									"value": "288248609273647548",
 									"type": "text"
 								},
 								{
