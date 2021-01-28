@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "83448539-937f-42b5-b82b-8faa4dfc01db",
 								"exec": [
 									"",
 									"",
@@ -33,7 +32,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4b250a9d-22c5-4524-8c7a-bb410d1b55e8",
 								"exec": [
 									""
 								],
@@ -137,7 +135,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f71f9e4b-6d81-4bc4-bed9-a9b32c6e87a4",
 								"exec": [
 									"",
 									"",
@@ -159,7 +156,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "07aa607e-c7a5-481b-9c5f-c9561957b401",
 								"exec": [
 									""
 								],
@@ -262,7 +258,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "41baacfa-f93b-490d-9dec-bc8eb962c248",
 								"exec": [
 									"",
 									"",
@@ -281,7 +276,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7d638206-dca2-4f0d-a627-5ea76045c39c",
 								"exec": [
 									"let vendor = pm.iterationData.get(\"vendor\");",
 									""
@@ -386,7 +380,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ec9b38db-55ed-44ed-8fa4-c796496bfdca",
 								"exec": [
 									"",
 									"",
@@ -405,7 +398,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "290f2a9b-fc10-494a-a949-7b3bf862af29",
 								"exec": [
 									"let vendor = pm.iterationData.get(\"vendor\");",
 									""
@@ -510,7 +502,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "afa4a9a3-6554-4482-a0f5-854b861da1d6",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -518,7 +509,7 @@
 									"\r",
 									"pm.test(\"Duplicate cancellation\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.status).to.eql('Duplicate cancellation');\r",
+									"    pm.expect(jsonData.status).to.eql('duplicate requests');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -579,7 +570,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "44969701-00cc-4d9f-a111-af0643a60514",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -621,7 +611,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0b9665da-1c5b-430a-ac82-48e259034cf8",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -673,10 +662,7 @@
 									"value": "test",
 									"type": "text"
 								}
-							],
-							"options": {
-								"urlencoded": {}
-							}
+							]
 						},
 						"url": {
 							"raw": "https://{{url}}/chop/refund",
@@ -698,7 +684,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3ea2921c-10c6-4306-b27f-07c3beab4f41",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -742,10 +727,7 @@
 									"value": "real",
 									"type": "text"
 								}
-							],
-							"options": {
-								"urlencoded": {}
-							}
+							]
 						},
 						"url": {
 							"raw": "https://{{url}}/chop/inquire",
@@ -767,7 +749,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "896d10f9-f906-4c6b-892d-2a6524d18565",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -895,8 +876,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "mobilepay",
@@ -907,7 +887,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "abbf90dd-eaed-44d6-b12d-cfc5605c1d91",
 								"exec": [
 									""
 								],
@@ -917,7 +896,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "53116d17-2294-4b98-9c98-723fb8109b3d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1025,7 +1003,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "704e77e4-d228-46f3-b1a0-660a39e105e6",
 								"exec": [
 									""
 								],
@@ -1035,7 +1012,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "414665df-1035-4d36-b7bb-7a6bf434d7d6",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1141,7 +1117,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "14ffe89c-f4f7-4150-85e8-b4027de41c32",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1215,7 +1190,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4277d021-ed4b-4d8d-bfc9-7ab5edfc9557",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1267,7 +1241,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "82bb9a12-94e3-4f99-bd96-b6bbb9426976",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1381,7 +1354,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f5846297-0326-421a-b174-1c2428bb06dd",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1466,7 +1438,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d9c2d7d3-0827-4df5-9ce6-f6849f99a0c4",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1483,7 +1454,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7790c93a-f251-4574-9223-2cee73d6f4a1",
 								"exec": [
 									""
 								],
@@ -1588,7 +1558,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "aa49a9a4-cf4d-4915-8081-b014d9c63f76",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1668,7 +1637,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "55f4074e-16b1-4018-9ecf-70f287ff8c4a",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1754,7 +1722,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5bc21fba-9e11-4d24-a6b2-2e21f7065ebc",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -1837,7 +1804,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9763adce-39fd-4324-a87a-cd5ecd08f985",
 								"exec": [
 									""
 								],
@@ -1847,7 +1813,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6ff9154a-914f-4ee7-843c-0a0c47ea5fb3",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1965,8 +1930,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "ronghan online",
@@ -1977,7 +1941,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4148c47e-b1bb-44a4-8699-178ae6b098aa",
 								"exec": [
 									""
 								],
@@ -1987,7 +1950,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f91499cf-0e7c-45cf-8f46-4c371b93422c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2093,7 +2055,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e2e66ed7-8d8c-4f02-8186-048d4c488859",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2110,7 +2071,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "54eb681b-19cb-4a3f-8c65-3bb0f33ffad9",
 								"exec": [
 									""
 								],
@@ -2215,7 +2175,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "386811d1-39cf-4d88-a89f-23e311998c1e",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2301,7 +2260,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c5124be2-be5b-4a65-889b-b26ac8f8eb19",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -2377,7 +2335,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b25c2296-dda1-4ce1-a456-f7b9e27ad8da",
 								"exec": [
 									""
 								],
@@ -2387,7 +2344,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "01e64c47-625f-4a24-82e7-ca1c57e2ae0c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2505,8 +2461,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "ams online",
@@ -2517,7 +2472,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "99425eed-bc2a-4ffb-87ea-7a0a9f47c988",
 								"exec": [
 									""
 								],
@@ -2527,7 +2481,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "60df10b0-3338-4e8c-8c5c-2a350408427e",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2627,7 +2580,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b4aee9a2-cdda-438a-9ad6-86d6e89ae108",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2706,7 +2658,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1c4f7e34-c6d1-442f-b5b2-473621243e65",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2797,7 +2748,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9e89af3c-8733-45fe-9e75-bea0d58b7861",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2877,7 +2827,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ebbb5ab9-2a75-4c0b-970f-03d919d8ed15",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2969,14 +2918,14 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/pay_qr",
+							"raw": "https://{{url}}/payment/pay",
 							"protocol": "https",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"payment",
-								"pay_qr"
+								"pay"
 							]
 						}
 					},
@@ -2987,7 +2936,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7744741d-7101-4977-808d-187bc8727975",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2997,15 +2945,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8a8ee345-23c5-4fd0-b9c8-2ddc0aea3f5a",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "pos",
@@ -3016,7 +2962,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "695457ac-5b72-4fa5-90b2-97e89daa6208",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3094,7 +3039,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1e9f801e-2956-4368-a643-57f938a79347",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3197,7 +3141,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3a9e0a00-9a6e-4fe3-b4d6-1b5ced84ae7c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3245,7 +3188,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b03f9ec1-d55a-41e7-b227-b3bd62155a4c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3325,7 +3267,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "430b548b-8478-45fc-bf22-c82bbdd160b9",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3391,7 +3332,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "92e82914-8334-4c8b-9c9e-f4869adcb13d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3461,7 +3401,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "08b3ed5b-b288-4c41-8c44-c0272a4c16b6",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3541,7 +3480,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8e8bab1b-8653-4444-9425-7a16ef48d7b1",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3595,8 +3533,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "ams offline",
@@ -3607,7 +3544,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ad0b22d5-53a2-4d14-bb2f-bdcc1cf4362c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3710,7 +3646,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4a90fa4b-0793-42bc-80a6-2429d3f7d3a7",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3790,7 +3725,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ee8001f-4974-4fd9-ba67-b75d8048af6e",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3856,7 +3790,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4b2b7147-0ad9-46b7-8a4d-a219c6490012",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3925,7 +3858,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "c980642b-d339-42bb-b0f4-fc8b44e3f132",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3935,15 +3867,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6a1e3310-e3d4-46ce-9e09-2b02ba8fe7f2",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "ronghan offline",
@@ -3954,7 +3884,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e3e12ea6-4412-4590-802c-1ce5d0f5cc3e",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -4057,7 +3986,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5533c196-588c-435d-926b-82c92b9161c4",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4119,10 +4047,7 @@
 									"value": "GBP",
 									"type": "text"
 								}
-							],
-							"options": {
-								"urlencoded": {}
-							}
+							]
 						},
 						"url": {
 							"raw": "https://{{url}}/posp/rest/refund",
@@ -4145,7 +4070,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "50fe007d-a799-400b-a105-520cd9a81031",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4209,8 +4133,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "paypal",
@@ -4221,7 +4144,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6042cfb4-dffa-4e6d-aba4-7ef0539c2234",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -4324,7 +4246,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "17892dd9-0f03-45d6-bcbf-223bcc0155f6",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4390,7 +4311,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c3a23ee9-0f55-4142-ad55-0fd71647dce9",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4460,7 +4380,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2ec1fd88-0d2f-4cee-a5d9-85a6a32c4d96",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4534,8 +4453,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "cup",
@@ -4546,7 +4464,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2cf99496-f697-4f8e-a64a-58f2e1daa87c",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -4649,7 +4566,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "47bdaff9-c4cc-443d-b2f4-763df1e32f62",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4719,7 +4635,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "280ef681-b7f2-4444-861d-ef2da055a597",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4793,8 +4708,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "upop",
@@ -4805,7 +4719,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "44c3fba2-5e52-4285-a1f3-446bb0d025c1",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -4891,7 +4804,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "27508889-13de-42f2-a0c0-9d6ad2b33337",
 								"exec": [
 									"",
 									"pm.test(\"Status code is 200\", function () {",
@@ -4972,7 +4884,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "15a487e3-00e6-4c7d-bfb4-d3813db61445",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -4988,7 +4899,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d3b3516d-475d-448c-9bca-1935796fd909",
 								"exec": [
 									""
 								],
@@ -5087,8 +4997,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "cc",
@@ -5099,7 +5008,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "33c831e9-e283-4ca9-b5da-ea0580df4aea",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5168,7 +5076,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "25b3f271-31cc-49ce-bea6-984c290e3a3e",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5247,7 +5154,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ae16eef5-556b-4be3-9d9c-3bc253befba3",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5328,7 +5234,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1df20a9f-021a-4556-b6fd-abd7f67f7cb3",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5346,7 +5251,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c9401349-655d-4acb-a974-5a45b18f3c4b",
 								"exec": [
 									"function RandomRange(min, max) {\r",
 									"    var returnStr = \"\",\r",
@@ -5461,7 +5365,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "74e8bfa7-b3d4-41aa-b289-2546ff459ce8",
 								"exec": [
 									""
 								],
@@ -5471,7 +5374,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0ea52818-3ae6-4637-9a8f-8e513d438d7b",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5601,8 +5503,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "dashboard",
@@ -5613,7 +5514,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9de52267-79cf-497d-98b0-b66d14e2a72d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5674,7 +5574,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a6a5f3da-973a-4d58-8785-fb0b9eedf468",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5723,7 +5622,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a5b4aa03-8185-45ad-8f2d-6f3240f977a8",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5772,7 +5670,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ea06bf11-18f1-4dda-87d1-10e67dae8a4a",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5825,7 +5722,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9c2304c9-90aa-4a07-b885-031afe3a55c9",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5874,7 +5770,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6fa2272c-f395-4b7b-97f2-a5623f3a7335",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5923,7 +5818,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "70fbb025-ba70-44b5-8008-7c1fdd71afd1",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5972,7 +5866,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d3490f15-8460-48a2-88d1-0295e3be1a70",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -6025,7 +5918,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0514c04f-82f4-4af6-ac5e-22977861d105",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -6082,7 +5974,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "73662a21-3aff-414a-8b5d-665356121375",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -6134,7 +6025,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f76aaa4e-8c04-41e7-baf1-390c66b14245",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -6180,9 +6070,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
