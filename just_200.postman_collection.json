@@ -2662,9 +2662,9 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"refund amount greater than payment amount\", function () {\r",
+									"pm.test(\"invalid source\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.status).to.eql('refund amount greater than payment amount');\r",
+									"    pm.expect(jsonData.status).to.eql('Invalid source. Please contact Citcon.');\r",
 									"});"
 								],
 								"type": "text/javascript"
