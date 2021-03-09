@@ -875,6 +875,339 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "chop-ronghan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"let qstring = pm.response.json().url.split('=')[1];",
+									"console.log(qstring)",
+									"pm.test(\"qstring is not empty\", function(){",
+									"    pm.expect(qstring).not.eql('');",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ronghan_chop_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "payment_method",
+									"value": "wechatpay",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "GBP",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "huang monitor",
+									"type": "text"
+								},
+								{
+									"key": "ipn_url",
+									"value": "http://merchant.com/ipn",
+									"type": "text"
+								},
+								{
+									"key": "callback_url_success",
+									"value": "http://merchant.com/success",
+									"type": "text"
+								},
+								{
+									"key": "callback_url_fail",
+									"value": "http://merchant.com/fail",
+									"type": "text"
+								},
+								{
+									"key": "mobile_result_url",
+									"value": "http://merchant.com/mobile_confirm?reference=jkh25jh1348fd89sg",
+									"type": "text"
+								},
+								{
+									"key": "allow_duplicates",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "client_country",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/chop/chop",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chop",
+								"chop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chop-jko",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"let qstring = pm.response.json().url.split('=')[1];\r",
+									"console.log(qstring)\r",
+									"pm.test(\"qstring is not empty\", function(){\r",
+									"    pm.expect(qstring).not.eql('');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jko_chop_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Encoding",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 4198D7DFE4B3447E8257F583CD79960F"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "trans_amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "trans_currency",
+									"value": "TWD",
+									"type": "text"
+								},
+								{
+									"key": "payment_method",
+									"value": "jkopay",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "huang monitor",
+									"type": "text"
+								},
+								{
+									"key": "ipn_url",
+									"value": "http://47.240.46.69:3002/notify",
+									"type": "text"
+								},
+								{
+									"key": "callback_url_success",
+									"value": "http://merchant.com/success",
+									"type": "text"
+								},
+								{
+									"key": "allow_duplicates",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "callback_url_fail",
+									"value": "https://www.baidu.com",
+									"type": "text"
+								},
+								{
+									"key": "mobile_result_url",
+									"value": "http://www.sina.com",
+									"type": "text"
+								},
+								{
+									"key": "timeout",
+									"value": "1296000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://citconpay.com/chop/chop",
+							"protocol": "https",
+							"host": [
+								"citconpay",
+								"com"
+							],
+							"path": [
+								"chop",
+								"chop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chop-ams",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"let qstring = pm.response.json().url.split('=')[1];\r",
+									"console.log(qstring)\r",
+									"pm.test(\"qstring is not empty\", function(){\r",
+									"    pm.expect(qstring).not.eql('');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Encoding",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer B474B47869A7401C989BC185F2A721A1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "trans_amount",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "trans_currency",
+									"value": "HKD",
+									"type": "text"
+								},
+								{
+									"key": "payment_method",
+									"value": "alipay_hk",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "huang monitor",
+									"type": "text"
+								},
+								{
+									"key": "ipn_url",
+									"value": "http://47.240.46.69:3002/notify",
+									"type": "text"
+								},
+								{
+									"key": "callback_url_success",
+									"value": "http://merchant.com/success",
+									"type": "text"
+								},
+								{
+									"key": "allow_duplicates",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "callback_url_fail",
+									"value": "https://www.baidu.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://citconpay.com/chop/chop",
+							"protocol": "https",
+							"host": [
+								"citconpay",
+								"com"
+							],
+							"path": [
+								"chop",
+								"chop"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -6061,6 +6394,350 @@
 							"path": [
 								"api",
 								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "jko-online",
+			"item": [
+				{
+					"name": "jko-pay",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"let qstring = pm.response.text().split('=')[1];\r",
+									"\r",
+									"pm.test(\"qstring is not empty\", function(){\r",
+									"    pm.expect(qstring).not.eql('');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jko_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Encoding",
+								"value": "*"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer XGKHOZ3BAZ4YBYE8SWED5LBW4YWNV0PA"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "trans_amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "trans_currency",
+									"value": "TWD",
+									"type": "text"
+								},
+								{
+									"key": "vendor",
+									"value": "jkopay",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "huang monitor",
+									"type": "text"
+								},
+								{
+									"key": "ipn_url",
+									"value": "http://47.240.46.69:3002/notify",
+									"type": "text"
+								},
+								{
+									"key": "callback_url",
+									"value": "https://www.baidu.com",
+									"type": "text"
+								},
+								{
+									"key": "allow_duplicates",
+									"value": "yes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/payment/pay_qr",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment",
+								"pay_qr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jko-inquire",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"invalid source\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('Invalid source. Please contact Citcon.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jko_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer XGKHOZ3BAZ4YBYE8SWED5LBW4YWNV0PA"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "inquire_method",
+									"value": "real",
+									"type": "text"
+								},
+								{
+									"key": "transaction_id",
+									"value": "P1088697000-57d9c626973587dc298c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/payment/inquire",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment",
+								"inquire"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jko-refund",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"invalid source\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('Invalid source. Please contact Citcon.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jko_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer XGKHOZ3BAZ4YBYE8SWED5LBW4YWNV0PA"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "trans_amount",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "trans_currency",
+									"value": "TWD",
+									"type": "text"
+								},
+								{
+									"key": "reason",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "transaction_reference",
+									"value": "huangjko",
+									"type": "text"
+								},
+								{
+									"key": "transaction_id",
+									"value": "P1008373400-16ed72f8a917db1b",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{url}}/payment/refund",
+							"protocol": "https",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jko-cancel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"invalid source\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('Invalid source. Please contact Citcon.');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jko_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer XGKHOZ3BAZ4YBYE8SWED5LBW4YWNV0PA"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "reason",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "transaction_id",
+									"value": "P1008373400-16ed72f8a917db1b",
+									"type": "text"
+								},
+								{
+									"key": "transaction_reference",
+									"value": "huangjko",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://citconpay.com/payment/cancel",
+							"protocol": "https",
+							"host": [
+								"citconpay",
+								"com"
+							],
+							"path": [
+								"payment",
+								"cancel"
 							]
 						}
 					},
