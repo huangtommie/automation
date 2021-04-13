@@ -2815,14 +2815,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"let qstring = pm.response.text().split('=')[1];",
+									"// pm.test(\"Status code is 200\", function () {",
+									"//     pm.response.to.have.status(200);",
+									"// });",
+									"// let qstring = pm.response.text().split('=')[1];",
 									"",
-									"pm.test(\"qstring is not empty\", function(){",
-									"    pm.expect(qstring).not.eql('');",
-									"})"
+									"// pm.test(\"qstring is not empty\", function(){",
+									"//     pm.expect(qstring).not.eql('');",
+									"// })"
 								],
 								"type": "text/javascript"
 							}
@@ -2894,10 +2894,12 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/pay_qr",
+							"raw": "https://uat.citconpay.com/payment/pay_qr",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"uat",
+								"citconpay",
+								"com"
 							],
 							"path": [
 								"payment",
@@ -3161,13 +3163,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"q is not empty\", function () {\r",
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
+									"// pm.test(\"q is not empty\", function () {\r",
 									"    \r",
-									"    pm.expect(pm.response.text()).contains('P')\r",
-									"})"
+									"//     pm.expect(pm.response.text()).contains('P')\r",
+									"// })"
 								],
 								"type": "text/javascript"
 							}
@@ -3251,10 +3253,12 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/pay",
+							"raw": "https://uat.citconpay.com/payment/pay",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"uat",
+								"citconpay",
+								"com"
 							],
 							"path": [
 								"payment",
