@@ -2916,13 +2916,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"cancelled\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.cancelled).to.eql(true);\r",
-									"});"
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
+									"// pm.test(\"cancelled\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.cancelled).to.eql(true);\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -2974,10 +2974,12 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/cancel",
+							"raw": "https://uat.citconpay.com/payment/cancel",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"uat",
+								"citconpay",
+								"com"
 							],
 							"path": [
 								"payment",
@@ -2994,13 +2996,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"invalid source\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.status).to.eql('Invalid source. Please contact Citcon.');\r",
-									"});"
+									"// pm.test(\"Status code is 200\", function () {\r",
+									"//     pm.response.to.have.status(200);\r",
+									"// });\r",
+									"// pm.test(\"invalid source\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.status).to.eql('Invalid source. Please contact Citcon.');\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -3064,10 +3066,12 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/refund",
+							"raw": "https://uat.citconpay.com/payment/refund",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"uat",
+								"citconpay",
+								"com"
 							],
 							"path": [
 								"payment",
@@ -3084,13 +3088,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"invalid source\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.message).to.eql('Invalid source. Please contact Citcon.');",
-									"});"
+									"// pm.test(\"Status code is 200\", function () {",
+									"//     pm.response.to.have.status(200);",
+									"// });",
+									"// pm.test(\"invalid source\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.message).to.eql('Invalid source. Please contact Citcon.');",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -3143,10 +3147,12 @@
 							]
 						},
 						"url": {
-							"raw": "https://{{url}}/payment/inquire",
+							"raw": "https://uat.citconpay.com/payment/inquire",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"uat",
+								"citconpay",
+								"com"
 							],
 							"path": [
 								"payment",
