@@ -6399,7 +6399,7 @@
 									"});\r",
 									"pm.test(\"code is 200\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.success).to.eql('Password reset email was sent to your email address. Please follow the instruciton in the email to reset your password.');\r",
+									"    pm.expect(jsonData.success).to.eql('A password reset link will be sent to the email if the email input is valid. Please check your inbox and click the link in the email.');\r",
 									"});"
 								],
 								"type": "text/javascript"
