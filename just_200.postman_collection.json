@@ -5606,12 +5606,12 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"pulicKey is exist\", function () {\r",
-									"    var publicKey = pm.response.json().public_key;\r",
-									"    pm.expect(publicKey).to.not.be.empty;\r",
-									"    publicKey = publicKey.replace(/\\//g,\"/\");\r",
-									"    pm.globals.set(\"publicKey\",publicKey);\r",
-									"});"
+									"// pm.test(\"pulicKey is exist\", function () {\r",
+									"//     var publicKey = pm.response.json().public_key;\r",
+									"//     pm.expect(publicKey).to.not.be.empty;\r",
+									"//     publicKey = publicKey.replace(/\\//g,\"/\");\r",
+									"//     pm.globals.set(\"publicKey\",publicKey);\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
@@ -5746,10 +5746,10 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"pm.test(\"Must pass in token or card info\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error_message).to.eql('Must pass in token or card info');\r",
-									"});"
+									"// pm.test(\"Must pass in token or card info\", function () {\r",
+									"//     var jsonData = pm.response.json();\r",
+									"//     pm.expect(jsonData.error_message).to.eql('Must pass in token or card info');\r",
+									"// });"
 								],
 								"type": "text/javascript"
 							}
