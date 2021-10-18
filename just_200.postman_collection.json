@@ -15,8 +15,6 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"",
-									"",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
@@ -5256,10 +5254,12 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"uri\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.uri).to.eql('https:\\/\\/gateway.95516.com\\/gateway\\/api\\/frontTransReq.do');",
-									"});"
+									"",
+									"let qstring = pm.response.text().split('=')[1];",
+									"console.log(qstring)",
+									"pm.test(\"qstring is not empty\", function(){",
+									"    pm.expect(qstring).not.eql('');",
+									"})"
 								],
 								"type": "text/javascript"
 							}
